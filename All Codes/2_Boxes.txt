@@ -1,0 +1,83 @@
+#define GL_SILENCE_DEPRECATION // Remove Deprecation Messages
+#include <GLUT/glut.h> // GLUT, include glu.h and gl.h
+#include<math.h>
+using namespace std;
+
+
+float _moveBox1 = 0.0f;
+float _moveBox2 = 0.0f;
+
+void drawScene()
+{
+    glClearColor(0.35, 0.35, 0.35, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+
+
+
+    glPushMatrix(); //Box1
+    glTranslatef(_moveBox1, 0.0f, 0.0f);
+    glColor3d(0,0,0);
+    glBegin(GL_QUADS);
+    glVertex2f(-0.1f, 0.2f);
+    glVertex2f(0.1f, 0.2f);
+    glVertex2f(0.1f, 0.4f);
+    glVertex2f(-0.1f, 0.4);
+    glEnd();
+    glPopMatrix();
+
+
+
+    glPushMatrix(); //Box2
+    glTranslatef(_moveBox2, 0.0f, 0.0f);
+    glColor3d(1,1,0);
+    glBegin(GL_QUADS);
+    glVertex2f(-0.1f, -0.4f);
+    glVertex2f(0.1f, -0.4f);
+    glVertex2f(0.1f, -0.2f);
+    glVertex2f(-0.1f, -0.2);
+    glEnd();
+    glPopMatrix();
+
+
+    glutSwapBuffers();
+}
+
+
+
+void update(int value)
+{
+     _moveBox1 += .02;
+    if(_moveBox1 > 1.0)
+    {
+    _moveBox1 = -1.5;
+    }
+
+
+
+    _moveBox2 -= .02;
+    if(_moveBox2 < -1.5)
+    {
+    _moveBox2 = 1.0;
+    }
+
+    glutPostRedisplay();
+    glutTimerFunc(20, update, 0);
+}
+
+
+
+int main(int argc, char** argv)
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(800, 800);
+    glutCreateWindow("Two Boxes");
+    glutDisplayFunc(drawScene);
+    gluOrtho2D(-2,2,-2,2);
+    glutTimerFunc(20, update, 0); //Add a timer
+    glutMainLoop();
+    return 0;
+}
+

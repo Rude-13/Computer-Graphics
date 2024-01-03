@@ -1,0 +1,86 @@
+#define GL_SILENCE_DEPRECATION
+#include <GLUT/glut.h>
+#include<math.h>
+using namespace std;
+ 
+float squareX = 0.0f, circleY = 0.0f, triangleX = 0.0f, rectangleY = 0.0f;
+
+
+void circle(float radius, float xc, float yc, float r, float g, float b)
+{
+    glBegin(GL_POLYGON);
+    for(int i=0;i<200;i++)
+        {
+            glColor3f(r,g,b);
+            float pi=3.1416;
+            float A=(i*2*pi)/200;
+            float r=radius;
+            float x = r * cos(A);
+            float y = r * sin(A);
+            glVertex2f(x+xc,y+yc);
+        }
+    glEnd();
+}
+
+void handleKeyPress(unsigned char key, int x, int y) {
+    switch (key) {
+        case 'a': // Move to left
+            triangleX -= 0.1f;
+            break;
+        case 'd': // Move to right
+            squareX += 0.1f;
+            break;
+        case 'w': // upward
+            rectangleY += 0.1f;
+            break;
+        case 's': //downward
+            circleY -= 0.1f;
+            break;
+    }
+
+    glutPostRedisplay();
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glBegin(GL_QUADS);
+    glVertex2f(squareX + 0.5f, 0.1f);
+    glVertex2f(squareX + 0.3f, 0.1f);
+    glVertex2f(squareX + 0.3f, -0.1f);
+    glVertex2f(squareX + 0.5f, -0.1f);
+    glEnd();
+
+
+    circle(0.15,0.0,circleY-0.3,1.0,1.0,0.0);
+
+
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_TRIANGLES);
+    glVertex2f(triangleX - 0.5f, -0.1f);
+    glVertex2f(triangleX - 0.4, 0.1f);
+    glVertex2f(triangleX - 0.3f, -0.1f);
+    
+    glEnd();
+
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glBegin(GL_QUADS);
+    glVertex2f( - 0.2f,rectangleY + 0.5f);
+    glVertex2f( 0.1f,  rectangleY + 0.5f);
+    glVertex2f( 0.1f,  rectangleY + 0.3f);
+    glVertex2f(- 0.2f, rectangleY + 0.3f);
+    glEnd();
+    glutSwapBuffers();
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutCreateWindow("Move object with Keys");
+    glutReshapeWindow(1000, 800);
+    glutDisplayFunc(display);
+    glutKeyboardFunc(handleKeyPress);
+    glutMainLoop();
+    return 0;
+}
+

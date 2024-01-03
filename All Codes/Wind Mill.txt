@@ -1,0 +1,140 @@
+#define GL_SILENCE_DEPRECATION // Remove Deprecation Messages
+#include <GLUT/glut.h> // GLUT, include glu.h and gl.h
+#include<math.h>
+using namespace std;
+
+void circle(float radius, float xc, float yc, float r, float g, float b)
+{
+    glBegin(GL_POLYGON);
+    for(int i=0;i<200;i++)
+        {
+            glColor3f(r,g,b);
+            float pi=3.1416;
+            float A=(i*2*pi)/200;
+            float r=radius;
+            float x = r * cos(A);
+            float y = r * sin(A);
+            glVertex2f(x+xc,y+yc);
+        }
+    glEnd();
+}
+
+
+float _angle1 = 0.0f;
+void drawScene()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(1.0, 1.0, 1.0, 1.0f);
+    circle(0.04, 0.0, 0.0, 0.65, 0.65, 0.65);
+    
+    
+    glBegin(GL_POLYGON);
+    glColor3f(0.65f, 0.65f, 0.65f);
+    glVertex2f(-0.015f, 0.0f);
+    glVertex2f(0.015f, 0.0f);
+    glVertex2f(0.03f, -0.6f);
+    glVertex2f(-0.03f, -0.6f);
+    glEnd();
+   
+    
+    glColor3d(0.8,0.8,0.8);
+    glLoadIdentity(); //Reset the drawing perspective
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glTranslatef(0.0,0.0,0);
+    glRotatef(-_angle1, 0.0f, 0.0f,1.0f);
+   // glTranslatef(-0.3,-0.1,0);
+    
+    glBegin(GL_POLYGON);
+        glVertex2f(-0.01f, 0.0f);
+        glVertex2f(-0.03f, 0.1f);
+        glVertex2f(-0.0f, 0.3f);
+        glVertex2f(0.01f, 0.3f);
+        //glVertex2f(0.01f, 0.1f);
+        glVertex2f(0.01f, 0.0f);
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+        glVertex2f(-0.01f, 0.0f);
+        //glVertex2f(-0.025f, -0.1f);
+        glVertex2f(-0.01f, -0.3f);
+        glVertex2f(0.0f, -0.3f);
+        glVertex2f(0.03f, -0.1f);
+        glVertex2f(0.01f, 0.0f);
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+        glVertex2f(0.0f, -0.01f);
+        //glVertex2f(0.1f, -0.025f);
+        glVertex2f(0.3f, -0.01f);
+        glVertex2f(0.3f, 0.0f);
+        glVertex2f(0.1f, 0.03f);
+        glVertex2f(0.0f, 0.01f);
+    glEnd();
+    
+    
+    glBegin(GL_POLYGON);
+        glVertex2f(0.0f, -0.01f);
+        glVertex2f(-0.1f, -0.03f);
+        glVertex2f(-0.3f, -0.0f);
+        glVertex2f(-0.3f, 0.01f);
+        //glVertex2f(-0.1f, 0.025f);
+        glVertex2f(0.0f, 0.01f);
+    glEnd();
+    
+    glPopMatrix();
+    
+    
+    
+    
+    
+    
+    
+    circle(0.03, 0.0, 0.0, 0.75, 0.75, 0.75);
+
+
+    glutSwapBuffers();
+}
+
+
+
+
+void update(int value) {
+
+
+
+
+    _angle1+=3.0f;
+    if(_angle1 > 360.0)
+    {
+        _angle1-=360;
+    }
+    glutPostRedisplay(); //Notify GLUT that the display has changed
+
+
+
+
+    glutTimerFunc(20, update, 0); //Notify GLUT to call update again in 25 milliseconds
+}
+
+
+
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(800, 800);
+    glutCreateWindow("Windmill");
+    glutDisplayFunc(drawScene);
+    glutTimerFunc(20, update, 0); //Add a timer
+    glutMainLoop();
+    return 0;
+}
+ 
+
+
+
+
+
+
+

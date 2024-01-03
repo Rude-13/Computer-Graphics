@@ -1,0 +1,294 @@
+#define GL_SILENCE_DEPRECATION // Remove Deprecation Messages
+#include <GLUT/glut.h> // GLUT, include glu.h and gl.h
+#include<math.h>
+using namespace std;
+
+
+float _angle1 = 0.0f;
+
+
+
+void circle(float radius, float xc, float yc, float r, float g, float b)
+{
+    glBegin(GL_POLYGON);
+    for(int i=0;i<200;i++)
+        {
+            glColor3f(r,g,b);
+            float pi=3.1416;
+            float A=(i*2*pi)/200;
+            float r=radius;
+            float x = r * cos(A);
+            float y = r * sin(A);
+            glVertex2f(x+xc,y+yc);
+        }
+    glEnd();
+}
+
+void drawScene()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glColor3d(1,0,0);
+      glLoadIdentity(); //Reset the drawing perspective
+      glMatrixMode(GL_MODELVIEW);
+
+
+
+
+    //========CAR=============CAR====================CAR===============CAR==========
+
+    //==============================================================================
+
+    glBegin(GL_POLYGON); //car roof
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glVertex2f(-0.45f, 0.1f);
+    glVertex2f(-0.15f, 0.1f);
+    glVertex2f(-0.1f, 0.0f);
+    glVertex2f(-0.5f, 0.0f);
+
+    glEnd();
+
+
+    glBegin(GL_POLYGON); //car glass
+    glColor3f(0.776f,0.886,0.89f);
+    glVertex2f(-0.44f, 0.08f);
+    glVertex2f(-0.31f, 0.08f);
+    glVertex2f(-0.315f, 0.0f);
+    glVertex2f(-0.48f, 0.0f);
+
+    glEnd();
+
+
+
+
+    glBegin(GL_POLYGON); //car glass
+    glColor3f(0.776f,0.886,0.89f);
+    glVertex2f(-0.29f, 0.08f);
+    glVertex2f(-0.16f, 0.08f);
+    glVertex2f(-0.12f, 0.0f);
+    glVertex2f(-0.285f, 0.0f);
+
+    glEnd();
+
+
+
+    glBegin(GL_POLYGON); //car body
+    glColor3f(0.35, 0.35, 0.35);
+    glVertex2f(-0.5f, 0.0f);
+    glVertex2f(-0.1f, 0.0f);
+    glVertex2f(0.07f, -0.05f);
+    glVertex2f(0.07f, -0.13f);
+    glVertex2f(-0.63f, -0.13f);
+    glVertex2f(-0.63f, -0.03f);
+
+    glEnd();
+
+
+    glBegin(GL_POLYGON); //car back light
+    glColor3f(1.0, 0.0f, 0.0f);
+    glVertex2f(-0.63f, -0.04f);
+    glVertex2f(-0.63f, -0.08f);
+    glVertex2f(-0.6f, -0.08f);
+    glVertex2f(-0.6f, -0.04f);
+
+
+    glEnd();
+
+
+    glBegin(GL_POLYGON); //car front light
+    glColor3f(1.0,1.0,0.0);
+    glVertex2f(0.07f, -0.055f);
+    glVertex2f(0.07f, -0.085f);
+    glVertex2f(0.03f, -0.085f);
+    glVertex2f(0.03f, -0.055f);
+
+
+    glEnd();
+
+
+
+    glBegin(GL_POLYGON); //car lower body
+    glColor3f(0.0, 0.0, 0.0);
+    glVertex2f(0.07f, -0.1f);
+    glVertex2f(0.07f, -0.13f);
+    glVertex2f(-0.635f, -0.13f);
+    glVertex2f(-0.635f, -0.1f);
+
+    glEnd();
+
+
+    glLineWidth(2.0);
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glVertex2f(-0.3f, -0.005f);
+    glVertex2f(-0.3f, -0.095f);
+
+    glEnd();
+
+
+    glLineWidth(3.0);
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glVertex2f(-0.47f, -0.02f);
+    glVertex2f(-0.45f, -0.02f);
+
+    glEnd();
+
+
+    glLineWidth(3.0);
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glVertex2f(-0.27f, -0.02f);
+    glVertex2f(-0.25f, -0.02f);
+
+    glEnd();
+
+
+    circle(0.06,-0.5,-0.12,0.0,0.0,0.0);
+    circle(0.02,-0.5,-0.12,0.55,0.55,0.55);
+    circle(0.06,-0.1,-0.12,0.0,0.0,0.0);
+    circle(0.02,-0.1,-0.12,0.55,0.55,0.55);
+
+
+    //=====================================================================
+
+
+
+    //=====================================================================
+        
+        circle(0.0435,-0.1,-0.12,0.65f, 0.65f, 0.65f);
+        circle(0.04,-0.1,-0.12,0.0,0.0,0.0);
+
+        glPushMatrix();
+        glTranslatef(-0.1,-0.12,0);
+        glRotatef(-_angle1, 0.0f, 0.0f,1.0f);
+
+        glBegin(GL_POLYGON);
+        glColor3f(0.65f, 0.65f, 0.65f);
+        glVertex2f(-0.01f, 0.0f);
+        glVertex2f(-0.005f, 0.04f);
+        glVertex2f(0.005f, 0.04f);
+        glVertex2f(0.01f, 0.0f);
+        glEnd();
+        
+        
+        glBegin(GL_POLYGON);
+        glColor3f(0.65f, 0.65f, 0.65f);
+        glVertex2f(-0.01f, 0.0f);
+        glVertex2f(-0.005f, -0.04f);
+        glVertex2f(0.005f, -0.04f);
+        glVertex2f(0.01f, 0.0f);
+        glEnd();
+        
+        
+        glBegin(GL_POLYGON);
+        glColor3f(0.65f, 0.65f, 0.65f);
+        glVertex2f(0.0f, -0.01f);
+        glVertex2f(0.04f, -0.005f);
+        glVertex2f(0.04f, 0.005f);
+        glVertex2f(0.0f, 0.01f);
+        glEnd();
+        
+        
+        glBegin(GL_POLYGON);
+        glColor3f(0.65f, 0.65f, 0.65f);
+        glVertex2f(0.0f, -0.01f);
+        glVertex2f(-0.04f, -0.005f);
+        glVertex2f(-0.04f, 0.005f);
+        glVertex2f(0.0f, 0.01f);
+        glEnd();
+            
+
+
+
+        glPopMatrix();
+        
+        circle(0.02,-0.1,-0.12, 0.45, 0.45, 0.45);
+        
+        
+        
+        
+        //=====================================================
+        
+        circle(0.0435,-0.5,-0.12,0.65f, 0.65f, 0.65f);
+        circle(0.04,-0.5,-0.12,0.0,0.0,0.0);
+
+        glPushMatrix();
+        glTranslatef(-0.5,-0.12,0);
+        glRotatef(-_angle1, 0.0f, 0.0f,1.0f);
+
+        glBegin(GL_POLYGON);
+        glColor3f(0.65f, 0.65f, 0.65f);
+        glVertex2f(-0.01f, 0.0f);
+        glVertex2f(-0.005f, 0.04f);
+        glVertex2f(0.005f, 0.04f);
+        glVertex2f(0.01f, 0.0f);
+        glEnd();
+        
+        
+        glBegin(GL_POLYGON);
+        glColor3f(0.65f, 0.65f, 0.65f);
+        glVertex2f(-0.01f, 0.0f);
+        glVertex2f(-0.005f, -0.04f);
+        glVertex2f(0.005f, -0.04f);
+        glVertex2f(0.01f, 0.0f);
+        glEnd();
+        
+        
+        glBegin(GL_POLYGON);
+        glColor3f(0.65f, 0.65f, 0.65f);
+        glVertex2f(0.0f, -0.01f);
+        glVertex2f(0.04f, -0.005f);
+        glVertex2f(0.04f, 0.005f);
+        glVertex2f(0.0f, 0.01f);
+        glEnd();
+        
+        
+        glBegin(GL_POLYGON);
+        glColor3f(0.65f, 0.65f, 0.65f);
+        glVertex2f(0.0f, -0.01f);
+        glVertex2f(-0.04f, -0.005f);
+        glVertex2f(-0.04f, 0.005f);
+        glVertex2f(0.0f, 0.01f);
+        glEnd();
+            
+
+
+
+        glPopMatrix();
+        
+        circle(0.02,-0.5,-0.12, 0.45, 0.45, 0.45);
+
+    glPopMatrix();
+
+    glutSwapBuffers();
+}
+
+void update(int value)
+{
+
+
+    _angle1 += 7.0f;
+    if(_angle1  < 360.0)
+
+    {
+        _angle1 +=360;
+    }
+      glutPostRedisplay(); //Notify GLUT that the display has changed
+
+      glutTimerFunc(20, update, 0); //Notify GLUT to call update again in 25 milliseconds
+}
+
+int main(int argc, char** argv) {
+      glutInit(&argc, argv);
+      glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+      glutInitWindowSize(1000, 1000);
+      glutCreateWindow("Car with moving wheels");
+      glutDisplayFunc(drawScene);
+      glutTimerFunc(20, update, 0); //Add a timer
+      glutMainLoop();
+      return 0;
+}
+
+
+

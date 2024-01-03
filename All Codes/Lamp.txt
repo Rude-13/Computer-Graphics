@@ -1,0 +1,58 @@
+#include <windows.h>  // for MS Windows
+#include <GL/glut.h>  // GLUT, include glu.h and gl.h
+
+/* Initialize OpenGL Graphics */
+void initGL() {
+	// Set "clearing" or background color
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Black and opaque
+}
+
+/* Handler for window-repaint event. Call back when the window first appears and
+whenever the window needs to be re-painted. */
+void display() {
+	glClear(GL_COLOR_BUFFER_BIT);   // Clear the color buffer with current clearing color
+
+
+	glBegin(GL_POLYGON); //lamppost
+	glColor3f(0.35f, 0.35f, 0.35f);
+	glVertex2f(0.152f, 0.2f);
+	glVertex2f(0.158f, 0.2f);
+	glVertex2f(0.16f, -0.2f);
+	glVertex2f(0.15f, -0.2f);
+
+	glEnd();
+
+
+	glBegin(GL_POLYGON); //lamppost
+	glColor3f(0.35f, 0.35f, 0.35f);
+	glVertex2f(0.05f, 0.2f);
+	glVertex2f(0.17f, 0.2f);
+	glVertex2f(0.17f, 0.205f);
+	glVertex2f(0.05f, 0.205f);
+
+	glEnd();
+
+
+	glBegin(GL_POLYGON); //lamppost
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.05f, 0.2f);
+	glVertex2f(0.07f, 0.2f);
+	glVertex2f(0.068f, 0.19f);
+	glVertex2f(0.052f, 0.19f);
+
+	glEnd();
+
+	glFlush();  // Render now
+}
+
+/* Main function: GLUT runs as a console application starting at main()  */
+int main(int argc, char** argv) {
+	glutInit(&argc, argv);
+	glutInitWindowSize(1000, 1000);          // Initialize GLUT
+	glutCreateWindow("Vertex, Primitive & Color");  // Create window with the given title// Set the window's initial width & height
+	glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
+	glutDisplayFunc(display);       // Register callback handler for window re-paint event
+	initGL();                       // Our own OpenGL initialization
+	glutMainLoop();                 // Enter the event-processing loop
+	return 0;
+}

@@ -1,0 +1,152 @@
+#include <windows.h>
+ 
+#include <GL/glut.h>
+ 
+ 
+ 
+void display()
+{
+ 
+glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+ 
+glClear(GL_COLOR_BUFFER_BIT);
+ 
+glLineWidth(3.0);
+ 
+ 
+ 
+ 
+glBegin(GL_LINES);
+ 
+glColor3f(1.0f, 1.0f, 1.0f);
+ 
+glVertex2f(-20.0f, 0.0f);
+ 
+glVertex2f(20.0f, 0.0f);
+ 
+glEnd();
+ 
+ 
+ 
+ 
+glBegin(GL_LINES);
+ 
+glColor3f(1.0f, 1.0f, 1.0f);
+ 
+glVertex2f(0.0f, -20.0f);
+ 
+glVertex2f(0.0f, 20.0f);
+ 
+glEnd();
+ 
+ 
+ 
+ 
+ 
+glBegin(GL_POLYGON);
+ 
+glColor3f(1.0f, 0.0f, 0.0f);
+ 
+glVertex2f(-8.0f, 2.0f);
+ 
+glVertex2f(-2.0f, 2.0f);
+ 
+glVertex2f(-2.0f, 7.0f);
+ 
+glVertex2f(-8.0f, 7.0f);
+ 
+glEnd();
+ 
+ 
+ 
+ 
+ 
+glBegin(GL_POLYGON);
+ 
+glColor3f(0.5f, 0.0f, 0.5f);
+ 
+glVertex2f(-7.0f, -5.0f);
+ 
+glVertex2f(-2.0f, -8.0f);
+ 
+glVertex2f(-2.0f, -2.0f);
+ 
+ 
+glEnd();
+ 
+ 
+ 
+ 
+glBegin(GL_POLYGON);
+ 
+glColor3f(1.0f, 1.0f, 0.0f);
+ 
+glVertex2f(5.0f, -3.0f);
+ 
+glVertex2f(2.0f, -7.0f);
+ 
+glVertex2f(8.0f, -7.0f);
+ 
+glEnd();
+ 
+ 
+ 
+ 
+glBegin(GL_POLYGON);
+ 
+glColor3f(0.13f, 0.55f, 0.13f);
+ 
+glVertex2f(2.0f, 3.5f);
+ 
+glVertex2f(7.0f, 3.5f);
+ 
+glVertex2f(7.0f, 5.5f);
+ 
+glVertex2f(2.0f, 5.5f);
+ 
+glEnd();
+ 
+ 
+ 
+glBegin(GL_POLYGON);
+ 
+glColor3f(0.13f, 0.55f, 0.13f);
+ 
+glVertex2f(7.0f, 2.0f);
+ 
+glVertex2f(9.5f, 4.5f);
+ 
+glVertex2f(7.0f, 7.0f);
+ 
+glEnd();
+ 
+ 
+glFlush();
+ 
+ 
+}
+ 
+ 
+ 
+int main(int argc, char** argv)
+{
+ 
+glutInit(&argc, argv);
+ 
+glutCreateWindow("OpenGL Setup");
+ 
+glutInitWindowSize(320, 320);
+ 
+glutDisplayFunc(display);
+ 
+gluOrtho2D(-10,10,-10,10);
+ 
+glutMainLoop();
+ 
+return 0;
+ 
+ 
+}
+
+
+

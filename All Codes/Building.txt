@@ -1,0 +1,187 @@
+#include <windows.h>  // for MS Windows
+#include <GL/glut.h>  // GLUT, include glu.h and gl.h
+
+/* Initialize OpenGL Graphics */
+void initGL() {
+	// Set "clearing" or background color
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Black and opaque
+}
+
+/* Handler for window-repaint event. Call back when the window first appears and
+whenever the window needs to be re-painted. */
+void display() {
+	glClear(GL_COLOR_BUFFER_BIT);   // Clear the color buffer with current clearing color
+
+
+	glBegin(GL_POLYGON); //4th
+	glColor3f(0.35f, 0.35f, 0.35f);
+	glVertex2f(0.3f, 0.8f);
+	glVertex2f(0.9f, 0.8f);
+	glVertex2f(0.9f, 0.6f);
+	glVertex2f(0.3f, 0.6f);
+
+	glEnd();
+
+
+	glBegin(GL_POLYGON); //3th
+	glColor3f(0.25f, 0.25f, 0.25f);
+	glVertex2f(0.3f, 0.6f);
+	glVertex2f(0.9f, 0.6f);
+	glVertex2f(0.9f, 0.4f);
+	glVertex2f(0.3f, 0.4f);
+
+	glEnd();
+
+
+	glBegin(GL_POLYGON); //2rd
+	glColor3f(0.35f, 0.35f, 0.35f);
+	glVertex2f(0.3f, 0.4f);
+	glVertex2f(0.9f, 0.4f);
+	glVertex2f(0.9f, 0.2f);
+	glVertex2f(0.3f, 0.2f);
+
+	glEnd();
+
+
+	glBegin(GL_POLYGON); //1st
+	glColor3f(0.25f, 0.25f, 0.25f);
+	glVertex2f(0.3f, 0.2f);
+	glVertex2f(0.9f, 0.2f);
+	glVertex2f(0.9f, 0.0f);
+	glVertex2f(0.3f, 0.0f);
+
+	glEnd();
+
+
+	glBegin(GL_POLYGON); //ground
+	glColor3f(0.35f, 0.35f, 0.35f);
+	glVertex2f(0.3f, 0.0f);
+	glVertex2f(0.9f, 0.0f);
+	glVertex2f(0.9f, -0.2f);
+	glVertex2f(0.3f, -0.2f);
+
+	glEnd();
+
+
+	glBegin(GL_POLYGON); //door
+	glColor3f(0.7f, 0.3f, 0.2f);
+	glVertex2f(0.55f, -0.1f);
+	glVertex2f(0.65f, -0.1f);
+	glVertex2f(0.65f, -0.2f);
+	glVertex2f(0.55f, -0.2f);
+
+	glEnd();
+
+    /*
+	glBegin(GL_POLYGON); //wg1
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.37f, -0.03f);
+	glVertex2f(0.47f, -0.03f);
+	glVertex2f(0.47f, -0.13f);
+	glVertex2f(0.37f, -0.13f);
+
+	glEnd();
+
+
+    glBegin(GL_POLYGON); //wg2
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.73f, -0.03f);
+	glVertex2f(0.83f, -0.03f);
+	glVertex2f(0.83f, -0.13f);
+	glVertex2f(0.73f, -0.13f);
+
+	glEnd();
+	*/
+
+	glBegin(GL_POLYGON); //w11
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.37f, 0.17f);
+	glVertex2f(0.47f, 0.17f);
+	glVertex2f(0.47f, 0.07f);
+	glVertex2f(0.37f, 0.07f);
+
+	glEnd();
+
+
+    glBegin(GL_POLYGON); //w12
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.73f, 0.17f);
+	glVertex2f(0.83f, 0.17f);
+	glVertex2f(0.83f, 0.07f);
+	glVertex2f(0.73f, 0.07f);
+
+	glEnd();
+
+
+	glBegin(GL_POLYGON); //w21
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.37f, 0.37f);
+	glVertex2f(0.47f, 0.37f);
+	glVertex2f(0.47f, 0.27f);
+	glVertex2f(0.37f, 0.27f);
+
+	glEnd();
+
+
+    glBegin(GL_POLYGON); //w22
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.73f, 0.37f);
+	glVertex2f(0.83f, 0.37f);
+	glVertex2f(0.83f, 0.27f);
+	glVertex2f(0.73f, 0.27f);
+
+	glEnd();
+
+	glBegin(GL_POLYGON); //w31
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.37f, 0.57f);
+	glVertex2f(0.47f, 0.57f);
+	glVertex2f(0.47f, 0.47f);
+	glVertex2f(0.37f, 0.47f);
+
+	glEnd();
+
+
+    glBegin(GL_POLYGON); //w32
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.73f, 0.57f);
+	glVertex2f(0.83f, 0.57f);
+	glVertex2f(0.83f, 0.47f);
+	glVertex2f(0.73f, 0.47f);
+
+	glEnd();
+
+
+	glBegin(GL_POLYGON); //w41
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.37f, 0.77f);
+	glVertex2f(0.47f, 0.77f);
+	glVertex2f(0.47f, 0.67f);
+	glVertex2f(0.37f, 0.67f);
+
+	glEnd();
+
+
+    glBegin(GL_POLYGON); //w42
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(0.73f, 0.77f);
+	glVertex2f(0.83f, 0.77f);
+	glVertex2f(0.83f, 0.67f);
+	glVertex2f(0.73f, 0.67f);
+
+	glEnd();
+
+	glFlush();  // Render now
+}
+
+/* Main function: GLUT runs as a console application starting at main()  */
+int main(int argc, char** argv) {
+	glutInit(&argc, argv);
+	glutInitWindowSize(1000, 1000);          // Initialize GLUT
+	glutCreateWindow("Vertex, Primitive & Color");  // Create window with the given title// Set the window's initial width & height
+	glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
+	glutDisplayFunc(display);       // Register callback handler for window re-paint event
+	initGL();                       // Our own OpenGL initialization
+	glutMainLoop();                 // Enter the event-processing loop
+	return 0;
+}

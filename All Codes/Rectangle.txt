@@ -1,0 +1,94 @@
+#include <windows.h>
+#include <GL/glut.h>
+ 
+void display()
+{
+ 
+glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+ 
+glClear(GL_COLOR_BUFFER_BIT);
+ 
+glLineWidth(4.5);
+ 
+ 
+glBegin(GL_LINES);
+ 
+glColor3f(1.0f, 1.0f, 1.0f);
+ 
+glVertex2f(-4.0f, -2.7f);
+ 
+glVertex2f(4.0f, -2.7f);
+ 
+glEnd();
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+glBegin(GL_LINES);
+ 
+glColor3f(1.0f, 1.0f, 1.0f);
+ 
+glVertex2f(4.0f, -2.7f);
+ 
+glVertex2f(4.0f, 2.7f);
+ 
+glEnd();
+ 
+ 
+ 
+glBegin(GL_LINES);
+ 
+glColor3f(1.0f, 1.0f, 1.0f);
+ 
+glVertex2f(4.0f, 2.7f);
+ 
+glVertex2f(-4.0f, 2.7f);
+ 
+glEnd();
+ 
+ 
+ 
+glBegin(GL_LINES);
+ 
+glColor3f(1.0f, 1.0f, 1.0f);
+ 
+glVertex2f(-4.0f, 2.7f);
+ 
+glVertex2f(-4.0f, -2.7f);
+ 
+glEnd();
+ 
+ 
+glFlush();
+ 
+}
+ 
+ 
+ 
+int main(int argc, char** argv)
+{
+ 
+glutInit(&argc, argv);
+ 
+ 
+ 
+glutCreateWindow("OpenGL Setup");
+ 
+ 
+glutInitWindowSize(320, 320);
+ 
+glutDisplayFunc(display);
+ 
+gluOrtho2D(-10,10,-10,10);
+ 
+glutMainLoop();
+ 
+ 
+return 0;
+ 
+}
+
+
